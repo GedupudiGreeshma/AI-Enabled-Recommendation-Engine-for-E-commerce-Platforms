@@ -38,7 +38,10 @@ st.markdown("""
 # -----------------------------
 @st.cache_data
 def load_model():
-    with open("recommender_model.pkl", "rb") as f:
+    base_dir = os.path.dirname(__file__)   # app/ directory
+    model_path = os.path.join(base_dir, "recommender_model.pkl")
+
+    with open(model_path, "rb") as f:
         return pickle.load(f)
 
 model_data = load_model()
