@@ -1,136 +1,59 @@
-## Milestone 1: Data Preparation ✅
+# AI-Enabled Recommendation Engine
 
-### Objective
-
-Prepare clean and structured datasets for recommendation model development.
-
-### Tasks Completed
-
-* Collected and explored the e-commerce dataset
-* Removed duplicates and handled missing values
-* Cleaned user and product interaction data
-* Constructed the user–item interaction matrix
-
-### Files
-
-* `data/processed/cleaned_data.csv` – cleaned dataset
-* `data/processed/user_item_matrix.csv` – user–item interaction matrix
-* `notebooks/data_preparation.ipynb` – data preprocessing notebook
-
-### Status
-
-✔️ Milestone 1 completed successfully
+This project implements an AI-powered recommendation system for an e-commerce platform.  
+The system processes user–product interaction data, builds a collaborative filtering model, and deploys an interactive web application using Streamlit.
 
 ---
 
-## Milestone 2: Recommendation Model Building ✅
+## Project Description
 
-### Objective
+The recommendation engine provides personalized and product-based recommendations using collaborative filtering techniques.  
+Users can browse products visually, click on any product, and receive relevant recommendations in real time.
 
-Develop and train a recommendation model using the prepared e-commerce dataset.
-
-### Model Selection
-
-A **User–Category Collaborative Filtering** approach was implemented.
-
-* Users are represented by their category-level interactions
-* Categories act as items in the user–item matrix (Product IDs were replaced with categories to address sparsity)
-* Cosine similarity is used to compute user similarity
-* This approach enables similarity computation despite single-product interactions
-
-### Model Architecture
-
-* User–Item Matrix (User × Category)
-* Implicit interaction modeling
-* Matrix normalization using L2 normalization
-* Cosine similarity for user similarity computation
-* Top-N recommendation logic
-* Popularity-based fallback mechanism for cold-start users
-
-### Training Process
-
-* Constructed a user–category interaction matrix
-* Normalized the interaction matrix
-* Computed user similarity using cosine similarity
-* Generated recommendations based on preferences of similar users
-
-### Evaluation Metrics (Initial Analysis)
-
-* Matrix sparsity
-* Recommendation coverage
-* Average user similarity
-
-These metrics provide an initial understanding of model behavior under data constraints.
-
-### Key Observations
-
-* Due to single interaction per user, similarity signals are weak
-* Recommendations frequently fall back to globally popular categories
-* This behavior is expected in cold-start and sparse data scenarios
-
-### Limitations
-
-* No repeated user interactions
-* No explicit rating data
-* Limited personalization capability
-
-### Status
-
-✅ Recommendation model successfully developed and trained
-✅ Initial evaluation completed
-✅ Milestone 2 objectives met
+The system supports:
+- Similar product recommendations
+- “Users who bought this also bought” recommendations
+- Personalized suggestions based on user interaction history
 
 ---
 
-## Milestone 3: Evaluation and Refinement ✅
+## Milestones Overview
 
-### Objective
+### Milestone 1: Data Preparation ✅
+Prepared clean and structured datasets by removing duplicates, handling missing values, and constructing the user–item interaction matrix.
 
-Evaluate the performance of the recommendation model and refine it to improve accuracy and reliability.
+### Milestone 2: Recommendation Model Building ✅
+Developed a User–Category Collaborative Filtering model using cosine similarity and Top-N recommendation logic with cold-start handling.
 
-### Evaluation Methodology
+### Milestone 3: Evaluation and Refinement ✅
+Evaluated the model using Precision, Recall, and F1-score with Top-K strategies and refined performance based on results.
 
-The model developed in Milestone 2 was evaluated using standard recommendation system metrics:
+### Milestone 4: System Deployment ✅
+Deployed the recommendation system as a Streamlit web application and integrated real-time recommendation logic with the UI.
 
-* Precision
-* Recall
-* F1-score
+---
 
-Evaluation was performed using a **Top-K recommendation strategy**, where K values of 3, 5, and 10 were tested to analyze performance under different recommendation list sizes.
+## Application Features
 
-### Metrics Used
+- Login-based access
+- Image-based product catalog
+- Category-wise product display
+- Click-based recommendation flow
+- Real-time recommendations
+- Interactive cart management
 
-* **Precision@K**: Measures the relevance of recommended categories
-* **Recall@K**: Measures the model’s ability to retrieve relevant categories
-* **F1-score@K**: Provides a balanced evaluation of precision and recall
+---
 
-### Model Refinement
+## Technologies Used
 
-* Tested multiple values of K (Top-3, Top-5, Top-10)
-* Observed trade-offs between precision and recall
-* Identified optimal K based on balanced F1-score
+- Python
+- Pandas, NumPy
+- Scikit-learn
+- Streamlit
+- Git & GitHub
 
-### Key Results
+---
 
-* The model achieved consistently high precision, indicating highly relevant recommendations
-* Recall improved as the value of K increased
-* The F1-score showed significant improvement for higher K values, demonstrating effective refinement
+## License
 
-### Scenario Testing
-
-* Users with minimal interaction history
-* Users with relatively higher interaction signals
-
-The model showed stable behavior across scenarios, with popularity-based recommendations effectively handling sparse and cold-start cases.
-
-### Observations
-
-* High precision indicates conservative but accurate recommendations
-* Lower recall is expected due to sparse interaction data
-* Increasing K improves coverage and recall without degrading precision
-
-### Status
-
-✅ Model performance validated using precision, recall, and F1-score
-✅ Model refined through Top-K tuning
-✅ Milestone 3 objectives met
+This project is licensed under the MIT License.
